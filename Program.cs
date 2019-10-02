@@ -4,74 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _11_GradeBoundaries
+namespace _13_DivisibleProblem
 {
     class Program
     {
-        /*
-		<2	U
-		2	1
-		4	2
-		13	3
-		22	4
-		31	5
-		41	6
-		54	7
-		67	8
-		80	9
-
-         */
         static void Main(string[] args)
         {
-            Console.Write("Enter your mark: ");
-            int score = Convert.ToInt32(Console.ReadLine());
-            if(score < 2)
+            int num1;
+            int num2;
+            while (true)
             {
-                int missed = 2 - score;
-                Console.WriteLine("You achieved a grade U. "+missed.ToString()+" off a 1.");
-            } else if (score < 4)
-            {
-                int missed = 4 - score;
-                Console.WriteLine("You achieved a grade 1. " + missed.ToString() + " off a 2.");
-            } else if(score < 13)
-            {
-                int missed = 13 - score;
-                Console.WriteLine("You achieved a grade 2. " + missed + " off a 3.");
+                try
+                {
+                    Console.Write("Enter number 1: ");
+                    num1 = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Enter number 2: ");
+                    num2 = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Please make sure you enter two integers");
+                }
             }
-            else if (score < 22)
+            try
             {
-                int missed = 22 - score;
-                Console.WriteLine("You achieved a grade 3. " + missed.ToString() + " off a 4.");
+                int result = num2 / num1;
+                if (num2%num1 == 0)
+                {
+                    Console.WriteLine(num2+" is exactly divisable by "+num1+".");
+                }
+                else
+                {
+                    Console.WriteLine(num2+"/"+num1+" gives a remainder of "+(num2%num1)+".");
+                }
             }
-            else if (score < 31)
+            catch (DivideByZeroException)
             {
-                int missed = 31 - score;
-                Console.WriteLine("You achieved a grade 4. " + missed + " off a 5.");
+                Console.WriteLine("You can't divide by zero.");
             }
-            else if (score < 41)
+            catch
             {
-                int missed = 41 - score;
-                Console.WriteLine("You achieved a grade 5. " + missed.ToString() + " off a 6.");
+                Console.WriteLine("Something went wrong.");
             }
-            else if (score < 54)
-            {
-                int missed = 54 - score;
-                Console.WriteLine("You achieved a grade 6. " + missed + " off a 7.");
-            }
-            else if (score < 67)
-            {
-                int missed = 67 - score;
-                Console.WriteLine("You achieved a grade 7. " + missed.ToString() + " off a 8.");
-            }
-            else if (score < 80)
-            {
-                int missed = 80 - score;
-                Console.WriteLine("You achieved a grade 8. " + missed + " off a 9.");
-            }
-            else
-            {
-                Console.WriteLine("You achieved a 9. Good job!");
-            }Console.ReadLine();
+
+            Console.ReadLine();
         }
     }
 }
